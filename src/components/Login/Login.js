@@ -1,7 +1,7 @@
 // Write your code at relevant places in the code below:
 
-import React, { useState,useEffect} from "react";
-
+import React, { useState,useEffect,useContext} from "react";
+import AuthContext from "../../store/auth-context";
 import Card from "../UI/Card/Card";
 import classes from "./Login.module.css";
 import Button from "../UI/Button/Button";
@@ -48,9 +48,9 @@ const Login = (props) => {
   const submitHandler = (event) => {
     event.preventDefault();
    
-    props.onLogin(enteredEmail, enteredPassword);
+    authCtx.onLogin(enteredEmail, enteredPassword);
   };
-
+   const authCtx = useContext(AuthContext);
   return (
     <Card className={classes.login}>
       <form onSubmit={submitHandler}>
