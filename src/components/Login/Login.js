@@ -47,17 +47,22 @@ const [passwordState, dispatchPassword] = useReducer(passwordReducer, {
   isValid: null,
 });
 
+  //VIDEO 3 OBJECT-DESTRUCTING-METHOD-USED
+
+  const {isValid:emailIsValid} = emailState;
+  const {isValid:passwordIsValid} = passwordState;
+
   useEffect(()=>{
  const timer =  setTimeout(()=>{
     setFormIsValid(
-      emailState.isValid && passwordState.isValid  
+      emailIsValid && passwordIsValid  
   )
   },500)
 
   return(()=>
    { clearTimeout(timer)}
   );
-},[emailState.isValid,passwordState.isValid])
+},[emailIsValid,passwordIsValid])
   
   const emailChangeHandler = (event) => {
   //  setEnteredEmail(event.target.value);
